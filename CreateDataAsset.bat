@@ -1,3 +1,3 @@
 @echo off
-py ./CreateDataAssetClass.py
+py ./RunDataAssetCreator.py
 pause

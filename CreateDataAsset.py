@@ -2,7 +2,7 @@ import unreal
 import sys
 
 # 패키지와 경로 설정
-package_path = "/Game/Datas"
+package_path = "/Game"
 asset_name = f"{sys.argv[1]}"
 
 # 패키지를 생성
