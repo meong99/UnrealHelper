@@ -1,10 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/DataAsset.h"
+#include "DataAssets/DDDataAsset_DataAssetBase.h"
 #include "DataAsset_ItemData.generated.h"
 
 UCLASS()
-class PROJECTCR_API UDataAsset_ItemData : public UDataAsset
+class PROJECTCR_API UDataAsset_ItemData : public UDDDataAsset_DataAssetBase
 {
     GENERATED_BODY()
 
