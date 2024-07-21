@@ -5,6 +5,7 @@ import tkinter as tk
 from tkinter import filedialog
 import numpy as np
 import re
+import sys
 
 def convert_to_python_name(ue_name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', ue_name)
@@ -59,8 +60,14 @@ asset_name = "DDDataAsset_" + os.path.splitext(os.path.basename(excel_file_path)
 struct_name = os.path.splitext(os.path.basename(excel_file_path))[0]
 
 # 팩토리 클래스를 사용하여 PrimaryDataAsset 인스턴스를 생성합니다.
+loaded_asset = unreal.load_asset(f"{asset_path}/{asset_name}.{asset_name}")
+if loaded_asset:
+    print("에셋이 이미 존재합니다. 데이터 변경만 할거라면 LoadDataFromExcel을 사용하세요.")
+    sys.exit(0)
+    
 factory = unreal.DataAssetFactory()
 new_asset = unreal.AssetToolsHelpers.get_asset_tools().create_asset(asset_name, asset_path, getattr(unreal, f"{asset_name}"), factory)
+
 set_asset_data_from_excel()
 
 # 생성된 PrimaryDataAsset 인스턴스에 데이터를 설정합니다.
